@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PDF Practice Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-file-pdf logo-icon"></i>
+                <span class="brand-text">PDF Practice Pro</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="upload.html">Upload</a>
+                <a href="#help">Help</a>
+                <div class="user-menu">
+                    <button class="user-btn" id="user-menu-btn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="username">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#"><i class="fas fa-chart-line"></i> Analytics</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Welcome back, <span id="user-greeting">John</span>!</h1>
+                <p>Here's your preparation overview and recent activities</p>
+                <a href="upload.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-plus"></i> Upload New PDF
+                </a>
+            </div>
+            <div class="header-stats">
+                <div class="stat-card">
+                    <div class="stat-icon success">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-pdfs">24</h3>
+                        <p>PDFs Processed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon primary">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-time">127</h3>
+                        <p>Hours Practiced</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon warning">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="avg-score">78%</h3>
+                        <p>Average Score</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon danger">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="streak-days">14</h3>
+                        <p>Day Streak</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-main">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Left Column -->
+                <div class="dashboard-column">
+                    <!-- Recent Tests -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-history"></i> Recent Tests</h2>
+                            <a href="history.html" class="view-all">View All</a>
+                        </div>
+                        <div class="recent-tests" id="recent-tests">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- Weak Areas -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-exclamation-triangle"></i> Focus Areas</h2>
+                            <span class="badge">Needs Improvement</span>
+                        </div>
+                        <div class="weak-areas" id="weak-areas">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div class="dashboard-column">
+                    <!-- Quick Actions -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-bolt"></i> Quick Actions</h2>
+                        </div>
+                        <div class="quick-actions">
+                            <a href="upload.html" class="action-card">
+                                <div class="action-icon primary">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h3>Upload PDF</h3>
+                                    <p>Convert new exam papers</p>
+                                </div>
+                            </a>
+                            <a href="library.html" class="action-card">
+                                <div class="action-icon success">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h3>My Library</h3>
+                                    <p>Access all your tests</p>
+                                </div>
+                            </a>
+                            <a href="#" class="action-card" id="resume-test-btn">
+                                <div class="action-icon warning">
+                                    <i class="fas fa-play-circle"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h3>Resume Test</h3>
+                                    <p>Continue where you left off</p>
+                                </div>
+                            </a>
+                            <a href="analytics.html" class="action-card">
+                                <div class="action-icon info">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <div class="action-content">
+                                    <h3>Analytics</h3>
+                                    <p>View detailed reports</p>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Upcoming Goals -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-flag"></i> Study Goals</h2>
+                            <button class="btn btn-outline btn-sm" id="add-goal-btn">
+                                <i class="fas fa-plus"></i> Add Goal
+                            </button>
+                        </div>
+                        <div class="goals-list" id="goals-list">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- Performance Chart -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-chart-line"></i> Performance Trend</h2>
+                            <div class="chart-filter">
+                                <select id="chart-period">
+                                    <option value="7d">Last 7 Days</option>
+                                    <option value="30d" selected>Last 30 Days</option>
+                                    <option value="90d">Last 90 Days</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="performance-chart"></canvas>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Exam Progress -->
+            <section class="dashboard-section full-width">
+                <div class="section-header">
+                    <h2><i class="fas fa-graduation-cap"></i> Exam Progress</h2>
+                    <div class="exam-filter">
+                        <button class="filter-btn active" data-exam="all">All</button>
+                        <button class="filter-btn" data-exam="upsc">UPSC</button>
+                        <button class="filter-btn" data-exam="ssc">SSC</button>
+                        <button class="filter-btn" data-exam="jee">JEE</button>
+                        <button class="filter-btn" data-exam="banking">Banking</button>
+                    </div>
+                </div>
+                <div class="exam-progress" id="exam-progress">
+                    <!-- Filled by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-file-pdf logo-icon"></i>
+                    <span class="brand-text">PDF Practice Pro</span>
+                    <p class="footer-tagline">Turn PDFs into Practice. Practice into Success.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Dashboard</h4>
+                        <a href="library.html">My Library</a>
+                        <a href="analytics.html">Analytics</a>
+                        <a href="goals.html">Study Goals</a>
+                        <a href="history.html">Test History</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="#">Help Center</a>
+                        <a href="#">Video Tutorials</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PDF Practice Pro. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add Goal Modal -->
+    <div class="modal" id="add-goal-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Study Goal</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="goal-form">
+                    <div class="form-group">
+                        <label for="goal-title">Goal Title</label>
+                        <input type="text" id="goal-title" class="form-control" placeholder="e.g., Complete 10 UPSC tests" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goal-exam">Exam Type</label>
+                        <select id="goal-exam" class="form-control" required>
+                            <option value="">Select Exam</option>
+                            <option value="upsc">UPSC</option>
+                            <option value="ssc">SSC</option>
+                            <option value="jee">JEE</option>
+                            <option value="neet">NEET</option>
+                            <option value="banking">Banking</option>
+                            <option value="general">General</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="goal-target">Target (Tests/Questions)</label>
+                            <input type="number" id="goal-target" class="form-control" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-deadline">Deadline</label>
+                            <input type="date" id="goal-deadline" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="goal-priority">Priority</label>
+                        <div class="priority-selector">
+                            <button type="button" class="priority-btn" data-priority="low">Low</button>
+                            <button type="button" class="priority-btn active" data-priority="medium">Medium</button>
+                            <button type="button" class="priority-btn" data-priority="high">High</button>
+                        </div>
+                        <input type="hidden" id="goal-priority" value="medium">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-goal-btn">Cancel</button>
+                <button class="btn btn-primary" id="save-goal-btn">Save Goal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

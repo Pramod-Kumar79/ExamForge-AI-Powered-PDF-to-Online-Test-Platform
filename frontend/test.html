@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Test - PDF Practice Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="test-mode">
+    <!-- Test Header -->
+    <header class="test-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="test-info">
+                    <h1 id="test-title">UPSC Prelims 2023 - GS Paper I</h1>
+                    <p id="test-subtitle">Practice Test • 100 Questions • 120 Minutes</p>
+                </div>
+                <div class="test-controls">
+                    <div class="timer-container">
+                        <div class="timer" id="timer">
+                            <i class="fas fa-clock"></i>
+                            <span id="time-display">02:00:00</span>
+                        </div>
+                        <div class="timer-controls">
+                            <button class="timer-btn" id="pause-btn" title="Pause">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button class="timer-btn" id="fullscreen-btn" title="Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="submit-test-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Test
+                    </button>
+                </div>
+            </div>
+            
+            <div class="test-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="current-question">1</span>
+                        <span class="stat-label">Current</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="answered-count">0</span>
+                        <span class="stat-label">Answered</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="marked-count">0</span>
+                        <span class="stat-label">Marked</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="remaining-count">100</span>
+                        <span class="stat-label">Remaining</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Test Navigation Sidebar -->
+    <aside class="test-sidebar" id="test-sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-list-ol"></i> Questions</h3>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="questions-grid" id="questions-grid">
+            <!-- Filled by JavaScript -->
+        </div>
+        <div class="sidebar-footer">
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-dot answered"></span>
+                    <span>Answered</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot marked"></span>
+                    <span>Marked</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot current"></span>
+                    <span>Current</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Test Content -->
+    <main class="test-main">
+        <div class="container">
+            <div class="question-container">
+                <!-- Question Header -->
+                <div class="question-header">
+                    <div class="question-meta">
+                        <span class="question-number" id="question-number">Question 1</span>
+                        <span class="question-marks" id="question-marks">• 2 marks</span>
+                        <span class="question-topic" id="question-topic">Modern History</span>
+                    </div>
+                    <div class="question-actions">
+                        <button class="btn btn-outline btn-sm" id="mark-btn">
+                            <i class="far fa-bookmark"></i> Mark for Review
+                        </button>
+                        <button class="btn btn-outline btn-sm" id="clear-btn">
+                            <i class="fas fa-eraser"></i> Clear Response
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question Text -->
+                <div class="question-text" id="question-text">
+                    <!-- Filled by JavaScript -->
+                </div>
+
+                <!-- Question Options -->
+                <div class="options-container" id="options-container">
+                    <!-- Filled by JavaScript -->
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="question-navigation">
+                    <button class="btn btn-outline" id="prev-btn">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <div class="navigation-info">
+                        <span id="nav-info">Question 1 of 100</span>
+                    </div>
+                    <button class="btn btn-outline" id="next-btn">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Test Instructions -->
+            <div class="test-instructions">
+                <h4><i class="fas fa-info-circle"></i> Test Instructions</h4>
+                <ul>
+                    <li>Each question carries 2 marks</li>
+                    <li>No negative marking in this practice test</li>
+                    <li>Use "Mark for Review" to flag questions for later review</li>
+                    <li>You can navigate using sidebar or Previous/Next buttons</li>
+                    <li>Timer will pause automatically if you switch tabs</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Test Footer -->
+    <footer class="test-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="test-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Do not refresh or close this page. Your progress will be lost.</span>
+                </div>
+                <div class="footer-actions">
+                    <button class="btn btn-outline" id="save-exit-btn">
+                        <i class="fas fa-save"></i> Save & Exit
+                    </button>
+                    <button class="btn btn-danger" id="end-test-btn">
+                        <i class="fas fa-flag-checkered"></i> End Test
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Submit Test Modal -->
+    <div class="modal" id="submit-modal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h3>Submit Test</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="submission-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="modal-answered">0</span>
+                        <span class="stat-label">Answered</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="modal-marked">0</span>
+                        <span class="stat-label">Marked</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="modal-skipped">100</span>
+                        <span class="stat-label">Not Answered</span>
+                    </div>
+                </div>
+                <p class="warning-text">
+                    <i class="fas fa-exclamation-circle"></i>
+                    You still have unanswered questions. Are you sure you want to submit?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="modal-cancel-btn">Continue Test</button>
+                <button class="btn btn-primary" id="modal-submit-btn">Submit Anyway</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Warning -->
+    <div class="fullscreen-warning" id="fullscreen-warning">
+        <div class="warning-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>You Left Fullscreen Mode</h3>
+            <p>Return to fullscreen to continue your test without interruptions.</p>
+            <button class="btn btn-primary" id="return-fullscreen-btn">
+                Return to Fullscreen
+            </button>
+        </div>
+    </div>
+
+    <!-- Pause Overlay -->
+    <div class="pause-overlay" id="pause-overlay">
+        <div class="pause-content">
+            <i class="fas fa-pause-circle"></i>
+            <h2>Test Paused</h2>
+            <p>Timer has been paused. Click resume to continue.</p>
+            <div class="pause-time">
+                <span>Time Remaining:</span>
+                <span class="time-remaining" id="pause-time">02:00:00</span>
+            </div>
+            <button class="btn btn-primary btn-lg" id="resume-btn">
+                <i class="fas fa-play"></i> Resume Test
+            </button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/test.js"></script>
+</body>
+</html>

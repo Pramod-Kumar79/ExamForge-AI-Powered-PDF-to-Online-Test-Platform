@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Questions - PDF Practice Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/review.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-file-pdf logo-icon"></i>
+                <span class="brand-text">PDF Practice Pro</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="review.html" class="active">Review</a>
+                <a href="#help">Help</a>
+                <a href="#" id="logout-btn" class="btn btn-outline">Logout</a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Review Header -->
+    <header class="review-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-main">
+                    <h1>Review Extracted Questions</h1>
+                    <p>Check and edit questions extracted from your PDF. Make sure everything looks correct before starting your practice test.</p>
+                </div>
+                <div class="header-actions">
+                    <div class="exam-info">
+                        <span class="exam-badge upsc">UPSC</span>
+                        <h3>UPSC Prelims 2023 - GS Paper I</h3>
+                        <p>Uploaded: Just now • 100 questions detected</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-outline" id="back-btn">
+                            <i class="fas fa-arrow-left"></i> Back to Upload
+                        </button>
+                        <button class="btn btn-primary" id="start-test-btn">
+                            <i class="fas fa-play"></i> Start Practice Test
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="review-stats">
+                <div class="stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="verified-count">85</span>
+                        <span class="stat-label">Verified</span>
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="needs-review-count">12</span>
+                        <span class="stat-label">Needs Review</span>
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="edited-count">3</span>
+                        <span class="stat-label">Edited</span>
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number">2:30</span>
+                        <span class="stat-label">Time Saved</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Review Content -->
+    <main class="review-main">
+        <div class="container">
+            <div class="review-container">
+                <!-- Left Panel: Questions List -->
+                <div class="questions-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-list-ol"></i> Questions (100)</h3>
+                        <div class="panel-actions">
+                            <button class="btn btn-sm btn-outline" id="select-all-btn">
+                                <i class="fas fa-check-double"></i> Select All
+                            </button>
+                            <button class="btn btn-sm btn-outline" id="filter-btn">
+                                <i class="fas fa-filter"></i> Filter
+                            </button>
+                        </div>
+                    </div>
+                    <div class="questions-list" id="questions-list">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Right Panel: Question Editor -->
+                <div class="editor-panel">
+                    <div class="editor-header">
+                        <h3 id="editor-title">Edit Question #1</h3>
+                        <div class="question-status">
+                            <span class="status-badge verified">Verified</span>
+                            <button class="btn btn-sm btn-success" id="mark-verified-btn">
+                                <i class="fas fa-check"></i> Mark Verified
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="editor-content">
+                        <!-- Question Text Editor -->
+                        <div class="editor-section">
+                            <label class="section-label">
+                                <i class="fas fa-question-circle"></i> Question Text
+                            </label>
+                            <div class="textarea-container">
+                                <textarea id="question-text" class="form-control" rows="4" placeholder="Enter question text..."></textarea>
+                                <div class="textarea-tools">
+                                    <button class="tool-btn" data-action="bold"><i class="fas fa-bold"></i></button>
+                                    <button class="tool-btn" data-action="italic"><i class="fas fa-italic"></i></button>
+                                    <button class="tool-btn" data-action="superscript"><i class="fas fa-superscript"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Options Editor -->
+                        <div class="editor-section">
+                            <label class="section-label">
+                                <i class="fas fa-list-ul"></i> Options
+                            </label>
+                            <div class="options-list" id="options-list">
+                                <!-- Filled by JavaScript -->
+                            </div>
+                            <button class="btn btn-outline btn-sm" id="add-option-btn">
+                                <i class="fas fa-plus"></i> Add Option
+                            </button>
+                        </div>
+
+                        <!-- Correct Answer & Metadata -->
+                        <div class="editor-section">
+                            <label class="section-label">
+                                <i class="fas fa-check-circle"></i> Correct Answer & Metadata
+                            </label>
+                            <div class="metadata-grid">
+                                <div class="form-group">
+                                    <label for="correct-answer">Correct Answer</label>
+                                    <select id="correct-answer" class="form-control">
+                                        <option value="">Select correct option</option>
+                                        <option value="A">Option A</option>
+                                        <option value="B">Option B</option>
+                                        <option value="C">Option C</option>
+                                        <option value="D">Option D</option>
+                                        <option value="E">Option E</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="question-type">Question Type</label>
+                                    <select id="question-type" class="form-control">
+                                        <option value="mcq">Multiple Choice</option>
+                                        <option value="true-false">True/False</option>
+                                        <option value="numerical">Numerical</option>
+                                        <option value="match">Matching</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="difficulty">Difficulty</label>
+                                    <select id="difficulty" class="form-control">
+                                        <option value="easy">Easy</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="hard">Hard</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="topic">Topic/Category</label>
+                                    <input type="text" id="topic" class="form-control" placeholder="e.g., Modern History, Algebra">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Explanation (Optional) -->
+                        <div class="editor-section">
+                            <label class="section-label">
+                                <i class="fas fa-lightbulb"></i> Explanation (Optional)
+                            </label>
+                            <textarea id="explanation" class="form-control" rows="3" placeholder="Add explanation or solution..."></textarea>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="editor-actions">
+                            <button class="btn btn-outline" id="prev-question-btn">
+                                <i class="fas fa-chevron-left"></i> Previous
+                            </button>
+                            <div class="action-group">
+                                <button class="btn btn-danger" id="delete-question-btn">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                                <button class="btn btn-success" id="save-question-btn">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                            </div>
+                            <button class="btn btn-outline" id="next-question-btn">
+                                Next <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bulk Actions Bar -->
+            <div class="bulk-actions-bar" id="bulk-actions-bar">
+                <div class="bulk-info">
+                    <span id="selected-count">0</span> questions selected
+                </div>
+                <div class="bulk-buttons">
+                    <button class="btn btn-sm btn-outline" id="bulk-verify-btn">
+                        <i class="fas fa-check"></i> Mark as Verified
+                    </button>
+                    <button class="btn btn-sm btn-outline" id="bulk-delete-btn">
+                        <i class="fas fa-trash"></i> Delete Selected
+                    </button>
+                    <button class="btn btn-sm btn-primary" id="bulk-save-btn">
+                        <i class="fas fa-save"></i> Save All Changes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Review Tips -->
+            <div class="review-tips">
+                <h4><i class="fas fa-lightbulb"></i> Quick Review Tips</h4>
+                <div class="tips-grid">
+                    <div class="tip">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Mark as Verified</strong> for correctly extracted questions</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-edit"></i>
+                        <p><strong>Fix typos</strong> in question text and options</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-list-ol"></i>
+                        <p><strong>Reorder options</strong> if they appear in wrong sequence</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-tag"></i>
+                        <p><strong>Add topics</strong> for better analytics and organization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-file-pdf logo-icon"></i>
+                    <span class="brand-text">PDF Practice Pro</span>
+                    <p class="footer-tagline">Turn PDFs into Practice. Practice into Success.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Review Help</h4>
+                        <a href="#">How to Review Questions</a>
+                        <a href="#">Common Extraction Issues</a>
+                        <a href="#">Editing Tips</a>
+                        <a href="#">Bulk Actions Guide</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="#">Contact Support</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Video Tutorials</a>
+                        <a href="#">Community</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PDF Practice Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h3>Confirm Action</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modal-message">Are you sure you want to perform this action?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="modal-cancel-btn">Cancel</button>
+                <button class="btn btn-primary" id="modal-confirm-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/review.js"></script>
+</body>
+</html>

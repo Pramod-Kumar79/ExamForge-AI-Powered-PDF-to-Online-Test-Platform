@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results - PDF Practice Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/results.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-file-pdf logo-icon"></i>
+                <span class="brand-text">PDF Practice Pro</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="upload.html">Upload</a>
+                <a href="results.html" class="active">Results</a>
+                <a href="#" id="logout-btn" class="btn btn-outline">Logout</a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Results Header -->
+    <header class="results-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-main">
+                    <h1>Test Results</h1>
+                    <p>Detailed analysis of your performance in UPSC Prelims 2023 - GS Paper I</p>
+                </div>
+                <div class="header-actions">
+                    <a href="dashboard.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </a>
+                    <button class="btn btn-primary" id="retake-btn">
+                        <i class="fas fa-redo"></i> Retake Test
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Results Content -->
+    <main class="results-main">
+        <div class="container">
+            <!-- Score Summary -->
+            <section class="score-summary">
+                <div class="summary-card">
+                    <div class="score-circle">
+                        <div class="circle-progress">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#E5E7EB" stroke-width="12"></circle>
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#2563EB" stroke-width="12" 
+                                        stroke-linecap="round" stroke-dasharray="339.292" stroke-dashoffset="67.8584">
+                                </circle>
+                            </svg>
+                        </div>
+                        <div class="score-text">
+                            <h2 id="score-percentage">80%</h2>
+                            <p>Your Score</p>
+                        </div>
+                    </div>
+                    <div class="score-details">
+                        <div class="score-stat">
+                            <span class="stat-label">Total Marks</span>
+                            <span class="stat-value" id="total-marks">200</span>
+                        </div>
+                        <div class="score-stat">
+                            <span class="stat-label">Marks Obtained</span>
+                            <span class="stat-value" id="obtained-marks">160</span>
+                        </div>
+                        <div class="score-stat">
+                            <span class="stat-label">Correct Answers</span>
+                            <span class="stat-value success" id="correct-count">80</span>
+                        </div>
+                        <div class="score-stat">
+                            <span class="stat-label">Incorrect Answers</span>
+                            <span class="stat-value danger" id="incorrect-count">20</span>
+                        </div>
+                        <div class="score-stat">
+                            <span class="stat-label">Time Taken</span>
+                            <span class="stat-value" id="time-taken">01:45:30</span>
+                        </div>
+                        <div class="score-stat">
+                            <span class="stat-label">Accuracy</span>
+                            <span class="stat-value warning" id="accuracy-rate">80%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Breakdown -->
+            <div class="results-grid">
+                <!-- Left Column -->
+                <div class="results-column">
+                    <!-- Topic-wise Performance -->
+                    <section class="results-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-chart-pie"></i> Topic-wise Performance</h2>
+                            <span class="section-badge">Weakest Topics Highlighted</span>
+                        </div>
+                        <div class="topics-list" id="topics-list">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- Difficulty Analysis -->
+                    <section class="results-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-signal"></i> Difficulty Analysis</h2>
+                        </div>
+                        <div class="difficulty-chart">
+                            <canvas id="difficulty-chart"></canvas>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div class="results-column">
+                    <!-- Time Analysis -->
+                    <section class="results-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-clock"></i> Time Analysis</h2>
+                            <span class="section-badge">Average: 1.05 min/question</span>
+                        </div>
+                        <div class="time-stats">
+                            <div class="time-stat">
+                                <div class="time-label">Fastest Question</div>
+                                <div class="time-value success">0:45</div>
+                            </div>
+                            <div class="time-stat">
+                                <div class="time-label">Slowest Question</div>
+                                <div class="time-value danger">3:20</div>
+                            </div>
+                            <div class="time-stat">
+                                <div class="time-label">Time Spent on Correct</div>
+                                <div class="time-value">0:58</div>
+                            </div>
+                            <div class="time-stat">
+                                <div class="time-label">Time Spent on Incorrect</div>
+                                <div class="time-value">1:25</div>
+                            </div>
+                        </div>
+                        <div class="time-chart">
+                            <canvas id="time-chart"></canvas>
+                        </div>
+                    </section>
+
+                    <!-- Comparison -->
+                    <section class="results-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-users"></i> Comparison</h2>
+                            <span class="section-badge">vs. Other Test Takers</span>
+                        </div>
+                        <div class="comparison-stats">
+                            <div class="comparison-stat">
+                                <div class="comparison-label">Your Percentile</div>
+                                <div class="comparison-value primary">85%</div>
+                                <div class="comparison-desc">Better than 85% of test takers</div>
+                            </div>
+                            <div class="comparison-stat">
+                                <div class="comparison-label">Average Score</div>
+                                <div class="comparison-value">65%</div>
+                                <div class="comparison-desc">You scored 15% above average</div>
+                            </div>
+                            <div class="comparison-stat">
+                                <div class="comparison-label">Top Score</div>
+                                <div class="comparison-value success">95%</div>
+                                <div class="comparison-desc">15% away from top score</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Question-wise Review -->
+            <section class="results-section full-width">
+                <div class="section-header">
+                    <h2><i class="fas fa-list-ol"></i> Question-wise Review</h2>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">All Questions</button>
+                        <button class="filter-btn" data-filter="incorrect">Incorrect</button>
+                        <button class="filter-btn" data-filter="marked">Marked</button>
+                        <button class="filter-btn" data-filter="skipped">Skipped</button>
+                    </div>
+                </div>
+                <div class="questions-review" id="questions-review">
+                    <!-- Filled by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Recommendations -->
+            <section class="results-section recommendations">
+                <div class="section-header">
+                    <h2><i class="fas fa-lightbulb"></i> Recommendations</h2>
+                </div>
+                <div class="recommendations-grid">
+                    <div class="recommendation-card">
+                        <div class="rec-icon primary">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="rec-content">
+                            <h3>Focus on Modern History</h3>
+                            <p>Your accuracy in Modern History is 45%. Practice 50 more questions from this topic.</p>
+                            <a href="#" class="rec-action">Start Practice</a>
+                        </div>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="rec-icon warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="rec-content">
+                            <h3>Improve Time Management</h3>
+                            <p>You spent 2+ minutes on 15 questions. Work on speed with timed practice sets.</p>
+                            <a href="#" class="rec-action">Take Speed Test</a>
+                        </div>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="rec-icon success">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="rec-content">
+                            <h3>Review Weak Areas</h3>
+                            <p>3 topics have below 60% accuracy. Review explanations and retake related questions.</p>
+                            <a href="#" class="rec-action">Review Topics</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <section class="action-buttons">
+                <a href="upload.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload New PDF
+                </a>
+                <button class="btn btn-outline btn-lg" id="download-report-btn">
+                    <i class="fas fa-download"></i> Download Detailed Report
+                </button>
+                <button class="btn btn-outline btn-lg" id="share-results-btn">
+                    <i class="fas fa-share-alt"></i> Share Results
+                </button>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-file-pdf logo-icon"></i>
+                    <span class="brand-text">PDF Practice Pro</span>
+                    <p class="footer-tagline">Turn PDFs into Practice. Practice into Success.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Results</h4>
+                        <a href="#">Understanding Scores</a>
+                        <a href="#">Performance Analytics</a>
+                        <a href="#">Improvement Tips</a>
+                        <a href="#">Compare Performance</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="#">Help Center</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Community</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PDF Practice Pro. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Share Modal -->
+    <div class="modal" id="share-modal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h3>Share Results</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Share your test results with friends or on social media:</p>
+                <div class="share-options">
+                    <button class="share-btn twitter">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </button>
+                    <button class="share-btn linkedin">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </button>
+                    <button class="share-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                </div>
+                <div class="share-link">
+                    <label>Direct Link:</label>
+                    <div class="link-container">
+                        <input type="text" id="share-link-input" value="https://pdfpracticepro.com/results/12345" readonly>
+                        <button class="btn btn-sm" id="copy-link-btn">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>

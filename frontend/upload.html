@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF - PDF Practice Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/upload.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-file-pdf logo-icon"></i>
+                <span class="brand-text">PDF Practice Pro</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="upload.html" class="active">Upload</a>
+                <a href="#help">Help</a>
+                <a href="#" id="logout-btn" class="btn btn-outline">Logout</a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="upload-header">
+                <h1>Upload Your Exam PDF</h1>
+                <p>Drag & drop your UPSC, SSC, JEE, NEET, Banking or any competitive exam PDF</p>
+            </div>
+            
+            <div class="upload-wizard">
+                <!-- Step 1: Upload -->
+                <div class="wizard-step active" id="step-upload">
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>Drag & Drop PDF File</h3>
+                        <p>or click to browse</p>
+                        <p class="upload-note">Maximum file size: 50MB • Supported: PDF only</p>
+                        <input type="file" id="pdf-input" accept=".pdf" hidden>
+                        <button class="btn btn-primary" id="browse-btn">
+                            <i class="fas fa-folder-open"></i> Browse Files
+                        </button>
+                    </div>
+                    
+                    <div class="recent-uploads">
+                        <h4>Recent Uploads</h4>
+                        <div class="recent-list" id="recent-list">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Exam Details -->
+                <div class="wizard-step" id="step-details">
+                    <div class="details-form">
+                        <h3>Exam Details</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="exam-type">Exam Type</label>
+                                <select id="exam-type" class="form-control">
+                                    <option value="">Select Exam Type</option>
+                                    <option value="upsc">UPSC Civil Services</option>
+                                    <option value="ssc">SSC CGL/CHSL</option>
+                                    <option value="jee">JEE Main/Advanced</option>
+                                    <option value="neet">NEET UG</option>
+                                    <option value="banking">Banking (IBPS, SBI)</option>
+                                    <option value="cat">CAT/MBA</option>
+                                    <option value="gate">GATE</option>
+                                    <option value="state-psc">State PSC</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exam-year">Exam Year</label>
+                                <select id="exam-year" class="form-control">
+                                    <option value="">Select Year</option>
+                                    <!-- Filled by JavaScript -->
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="paper-type">Paper Type</label>
+                                <select id="paper-type" class="form-control">
+                                    <option value="">Select Paper Type</option>
+                                    <option value="prelims">Prelims</option>
+                                    <option value="mains">Mains</option>
+                                    <option value="advance">Advance</option>
+                                    <option value="single">Single Paper</option>
+                                    <option value="set-a">Set A</option>
+                                    <option value="set-b">Set B</option>
+                                    <option value="set-c">Set C</option>
+                                    <option value="set-d">Set D</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject/Category</label>
+                                <input type="text" id="subject" class="form-control" placeholder="e.g., General Studies, Physics, Quant">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="paper-title">Paper Title (Optional)</label>
+                            <input type="text" id="paper-title" class="form-control" placeholder="e.g., UPSC Prelims 2023 Paper I">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Processing -->
+                <div class="wizard-step" id="step-processing">
+                    <div class="processing-content">
+                        <div class="processing-icon">
+                            <i class="fas fa-cog fa-spin"></i>
+                        </div>
+                        <h3>Processing Your PDF</h3>
+                        <p>Our AI is extracting questions, options, and answers from your PDF</p>
+                        
+                        <div class="progress-container">
+                            <div class="progress-bar" id="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <div class="progress-text" id="progress-text">0%</div>
+                        </div>
+                        
+                        <div class="processing-steps">
+                            <div class="processing-step active">
+                                <i class="fas fa-file-upload"></i>
+                                <span>Uploading PDF</span>
+                            </div>
+                            <div class="processing-step">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Extracting Text</span>
+                            </div>
+                            <div class="processing-step">
+                                <i class="fas fa-search"></i>
+                                <span>Detecting Questions</span>
+                            </div>
+                            <div class="processing-step">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Finalizing</span>
+                            </div>
+                        </div>
+                        
+                        <div class="processing-eta">
+                            <i class="fas fa-clock"></i>
+                            <span>Estimated time: <strong id="eta-time">1-2 minutes</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wizard Navigation -->
+            <div class="wizard-navigation">
+                <button class="btn btn-outline" id="prev-btn" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <div class="step-indicator">
+                    <span class="step-dot active"></span>
+                    <span class="step-dot"></span>
+                    <span class="step-dot"></span>
+                </div>
+                <button class="btn btn-primary" id="next-btn">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <!-- Quick Tips -->
+            <div class="upload-tips">
+                <h4><i class="fas fa-lightbulb"></i> Tips for Better Results</h4>
+                <div class="tips-grid">
+                    <div class="tip">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Use text-based PDFs (not scanned) for best accuracy</span>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-font"></i>
+                        <span>Clear formatting helps AI detect questions better</span>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-columns"></i>
+                        <span>Single column layouts work better than multi-column</span>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Answer keys should be at the end for automatic detection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-file-pdf logo-icon"></i>
+                    <span class="brand-text">PDF Practice Pro</span>
+                    <p class="footer-tagline">Turn PDFs into Practice. Practice into Success.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Help</h4>
+                        <a href="#">Upload Guide</a>
+                        <a href="#">Supported Formats</a>
+                        <a href="#">Troubleshooting</a>
+                        <a href="#">Contact Support</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Community</h4>
+                        <a href="#">User Forums</a>
+                        <a href="#">Success Stories</a>
+                        <a href="#">Feature Requests</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PDF Practice Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/upload.js"></script>
+</body>
+</html>
